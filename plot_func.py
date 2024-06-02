@@ -1,13 +1,12 @@
 import numpy as np
 from matplotlib import pyplot as plt
 from sympy import lambdify, symbols
+from pytexit import py2tex
 
 def plotter(func):
-    # Define the variable
     n = symbols('n')
-    
-    # Convert the sympy function to a numpy-compatible function
     func_numpy = lambdify(n, func, modules='numpy')
+    func_latex = py2tex(str(func))
     
     # Set plot parameters
     plt.rcParams["figure.figsize"] = [7.50, 3.50]
@@ -23,7 +22,7 @@ def plotter(func):
     y = func_numpy(x)
 
     # Scatter plot
-    plt.scatter(x, y, color='red', label=r'$f(n) = \log(n+1)$')
+    plt.scatter(x, y, color='red', label=func_latex)  # Use func_latex in the legend label
 
     # Customize the axis
     ax = plt.gca()

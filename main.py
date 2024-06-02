@@ -5,7 +5,7 @@ from calc_lim import calc_limit
 
 n = symbols('n')
 
-func = log(n + 1)
+func = 1/n
 
 plotter(func)
 
