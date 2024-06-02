@@ -1,22 +1,12 @@
 import numpy as np
-from matplotlib import pyplot as plt
+from sympy import symbols, log
+from plot_func import plotter
+from calc_lim import calc_limit
 
-plt.rcParams["figure.figsize"] = [7.50, 3.50]
-plt.rcParams["figure.autolayout"] = True
-plt.rcParams['axes.spines.right'] = False
-plt.rcParams['axes.spines.top'] = False
+n = symbols('n')
 
-def f(x):
-   return np.log(n)
+func = log(n + 1)
 
-x = np.linspace(0, 10, 100)
+plotter(func)
 
-for direction in ["xzero", "yzero"]:
-    plt.axis[direction].set_axisline_style("-|>")
-    plt.axis[direction].set_visible(True)
-
-plt.tick_params(labelbottom=False, labelleft=False)
-plt.plot(x, f(x), color='red', label=r'$f(x)$')
-plt.legend()
-
-plt.show()
+calc_limit(func)
